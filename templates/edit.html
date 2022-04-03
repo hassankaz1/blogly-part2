@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>User Edit</h1>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="fname" placeholder="{{user.first_name}}">
+    </div>
+    <div class="mb-3">
+        <label for="lname" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lname" placeholder="{{user.last_name}}">
+    </div>
+    <div class="mb-3">
+        <label for="iurl" class="form-label">Image URL</label>
+        <input type="text" class="form-control" name="iurl" placeholder="{{user.image_url}}">
+    </div>
+    <a class="btn btn-outline-danger" href="/users/{{ user.id }}">Cancel</a>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{% endblock %}
