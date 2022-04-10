@@ -8,6 +8,15 @@
 
 <p>{{post.content}}</p>
 
+{% if post.tags %}
+<p>
+    <b>Tags:</b>
+    {% for tag in post.tags %}
+    <a href="/tags/{{ tag.id }}"><i>{{ tag.title }}</i></a>
+    {% endfor %}
+</p>
+{% endif %}
+
 <div>
     <a class="btn btn-outline-dark" href="/users/{{post.user_id}}">Cancel</a>
     <a class="btn btn-outline-dark" href="/posts/{{post.id}}/edit">Edit</a>

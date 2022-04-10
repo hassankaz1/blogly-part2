@@ -45,3 +45,30 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+
+class PostTag(db.Model):
+    """Mapping of a post to a tag."""
+
+    __tablename__ = "posttag"
+
+    post_id = db.Column(db.Integer,
+                        db.ForeignKey("posts.id"),
+                        primary_key=True)
+    tag_id = db.Column(db.Integer,
+                       db.ForeignKey("tag.id"),
+                       primary_key=True)
+
+
+class Tag(db.Model):
+    """Post Tag"""
+    __tablename__ = "tag"
+
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+    title = db.Column(db.Text, nullable=False)
+
+    posts = db.relationship(
+        'Post', secondary="posttag", cascade="all,delete", backref="tags",
+    )

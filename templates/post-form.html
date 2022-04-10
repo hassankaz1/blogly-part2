@@ -13,7 +13,16 @@
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="content"></textarea>
-
+    </div>
+    <div class="form-check">
+        {% for tag in tags %}
+        <div>
+            <input class="form-check-input" type="checkbox" value="{{ tag.id }}" id="tag_{{ tag.id }}" name="tags">
+            <label class="form-check-label" for="tag_{{ tag.id }}">
+                {{ tag.title }}
+            </label>
+        </div>
+        {% endfor %}
     </div>
 
     <a class="btn btn-outline-danger" href="/users/{{user.id}}">Cancel</a>
